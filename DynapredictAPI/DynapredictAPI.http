@@ -1,0 +1,6 @@
+@DynapredictAPI_HostAddress = http://localhost:5223
+
+GET {{DynapredictAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
