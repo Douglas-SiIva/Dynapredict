@@ -17,24 +17,25 @@ namespace DynapredictAPI.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>()
-            .HasIndex(u => uint.Email)
-            .isUnique();
+                .HasIndex(u => u.Email)
+                .IsUnique();
 
-            modelBuilder.Entity<Machines>()
-            .HasIndex(u => modelBuilder.SerialNumber)
-            .isUnique();
+            modelBuilder.Entity<Machine>()
+                .HasIndex(m => m.SerialNumber)
+                .IsUnique();
 
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
                     Id = 1,
                     Email = "admin@dynapredict.com",
-                    name = "Adminiistrador",
-                    PasswordHash = BCrypt.Net.BCrypt.HasPassword("password123"),
+                    Name = "Administrador",
+                    PasswordHash = "$2a$11$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", // hash fixo
                     Role = "admin",
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = new DateTime(2025, 8, 22, 0, 0, 0, DateTimeKind.Utc) // valor fixo
                 }
             );
+
         }
     }
 }
